@@ -2,7 +2,7 @@ import React from "react";
 
 const TransactionHeaderTabs = () => {
   return (
-    <section className="px-6 pt-4 pb-2 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+    <section className="px-4 sm:px-6 pt-4 pb-2 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
       {/* Tabs */}
       <div className="flex flex-wrap gap-2 text-xs">
         <button className="bg-[#2a59ff] text-white rounded px-3 py-1.5">
@@ -23,7 +23,7 @@ const TransactionHeaderTabs = () => {
       </div>
 
       {/* Action Buttons */}
-      <div className="flex gap-2 text-xs">
+      <div className="flex flex-wrap gap-2 text-xs">
         <button className="border border-[#d9d9d9] px-3 py-1.5 rounded text-[#4a4a4a] hover:bg-[#f3f3f3]">
           EXPORT
         </button>

@@ -7,7 +7,7 @@ import TransactionTable from "./TransactionTable";
 
 const MainContent = () => {
   return (
-    <div className="flex-1 p-4">
+    <div className="flex-1 p-4 max-w-screen-2xl mx-auto">
       <Breadcrumb />
       <ProjectCardList />
       <SummarySection />

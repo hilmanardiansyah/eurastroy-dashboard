@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Sidebar = () => {
+const Sidebar = ({ isOpen, onClose }) => {
   const [openMenus, setOpenMenus] = useState({});
 
   const toggleMenu = (menuId) => {
@@ -129,21 +129,41 @@ const Sidebar = () => {
   ];
 
   return (
-    <aside className="bg-[#1e293b] w-64 flex flex-col text-[#94a3b8] select-none min-h-screen">
-      <div className="flex items-center gap-3 px-5 py-4 border-b border-[#334155]">
-        <button aria-label="Menu" className="text-white text-xl">
-          <i className="fas fa-bars"></i>
-        </button>
-        <span className="text-white font-semibold text-sm tracking-wide">
-          EURASTROY V 1.0
-        </span>
-      </div>
-      <nav className="flex flex-col flex-grow overflow-y-auto px-5 pt-6 pb-8 space-y-6 text-xs font-semibold">
-        {sections.map((section, idx) => (
-          <Section key={idx} {...section} />
-        ))}
-      </nav>
-    </aside>
+    <>
+      {/* Overlay untuk mobile */}
+      <div
+        className={`fixed inset-0 bg-black/50 z-30 md:hidden ${
+          isOpen ? "block" : "hidden"
+        }`}
+        onClick={onClose}
+      ></div>
+
+      {/* Sidebar */}
+      <aside
+        className={`fixed z-40 md:static bg-[#1e293b] w-64 min-h-screen transform transition-transform duration-300
+        ${isOpen ? "translate-x-0" : "-translate-x-full"}
+        md:translate-x-0 md:flex flex-col text-[#94a3b8] select-none`}
+      >
+        <div className="flex items-center gap-3 px-5 py-4 border-b border-[#334155]">
+          <button
+            aria-label="Close Menu"
+            onClick={onClose}
+            className="text-white text-xl md:hidden"
+          >
+            <i className="fas fa-times"></i>
+          </button>
+          <span className="text-white font-semibold text-sm tracking-wide">
+            EURASTROY V 1.0
+          </span>
+        </div>
+
+        <nav className="flex flex-col flex-grow overflow-y-auto px-5 pt-6 pb-8 space-y-6 text-xs font-semibold">
+          {sections.map((section, idx) => (
+            <Section key={idx} {...section} />
+          ))}
+        </nav>
+      </aside>
+    </>
   );
 };
 
